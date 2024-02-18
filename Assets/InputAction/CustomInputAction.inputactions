@@ -1,24 +1,24 @@
 {
-    "name": "CustomAction",
+    "name": "CustomInputAction",
     "maps": [
         {
-            "name": "Plyaer",
-            "id": "8b36341a-cd49-49d1-84fe-bc13c1bcd728",
+            "name": "Player",
+            "id": "b1ebe293-f759-49c8-978a-e9e9e68b578d",
             "actions": [
                 {
                     "name": "Move",
                     "type": "Button",
-                    "id": "33a9aa7c-29e5-4eab-8160-41b68a330169",
+                    "id": "2df698aa-c1b9-4ba4-bd41-b16f7e305949",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "b265c1c2-ea7a-4943-bec8-33509dd5c89d",
+                    "id": "0b32590a-2da1-4085-a494-4c25899fbc3d",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
