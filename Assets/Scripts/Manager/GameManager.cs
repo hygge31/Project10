@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject player;
-
+    public Transform poolingBox;
 
     private void Awake()
     {

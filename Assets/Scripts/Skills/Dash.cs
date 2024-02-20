@@ -19,8 +19,8 @@ public class Dash : MonoBehaviour
 
     public bool onDash;
 
-    public float initSpeed;
-    public float maxSpeed;
+    float initSpeed = 3f;
+    float maxSpeed =4f;
 
     public float accelerationTime = 2f; // 가속 시간
     public float decelerationTime = 2f; // 감속 시간
@@ -35,13 +35,21 @@ public class Dash : MonoBehaviour
 
     public Material mat;
 
+    Pooling pooling;
+    Transform poolingBox;
+
+ 
+
     private void Start()
     {
+        pooling = GetComponent<Pooling>();
+        poolingBox = GameManager.instance.poolingBox;
+        pooling.CreatePoolItem(poolingBox);
+
         playerController = GameManager.instance.player.GetComponent<PlayerController>();
         playerAnimationController = GameManager.instance.player.GetComponent<PlayerAnimationController>();
         playerMovement = GameManager.instance.player.GetComponent<PlayerMovement>();
 
-        initSpeed = playerMovement.runSpeed;
     }
 
     public void ActiveDash()
@@ -69,7 +77,7 @@ public class Dash : MonoBehaviour
         while (currentAccelerationTime < accelerationTime) //1
         {
             currentAccelerationTime += Time.deltaTime;
-            playerController.playerSpeed = Mathf.Lerp(initSpeed, maxSpeed, currentAccelerationTime / accelerationTime);
+            playerMovement.navMeshAgent.speed = Mathf.Lerp(initSpeed, maxSpeed, currentAccelerationTime / accelerationTime);
 
 
             float curSpeed = Mathf.Lerp(initspeed, maxspeed, currentAccelerationTime / accelerationTime);
@@ -81,7 +89,7 @@ public class Dash : MonoBehaviour
         while (currentDecelerationTime < decelerationTime) //1
         {
             currentDecelerationTime += Time.deltaTime;
-            playerController.playerSpeed = Mathf.Lerp(maxSpeed, initSpeed, currentDecelerationTime / decelerationTime);
+            playerMovement.navMeshAgent.speed = Mathf.Lerp(maxSpeed, initSpeed, currentDecelerationTime / decelerationTime);
 
             float curSpeed = Mathf.Lerp(maxspeed, initspeed, currentDecelerationTime / decelerationTime);
             playerAnimationController.animator.SetFloat("addSpeed", curSpeed);
@@ -89,7 +97,6 @@ public class Dash : MonoBehaviour
 
             yield return null;
         }
-        playerController.playerSpeed = 60;
         playerAnimationController.animator.SetBool("isRunning", false);
         playerAnimationController.isRunning = false;
 
@@ -119,18 +126,19 @@ public class Dash : MonoBehaviour
         while(activeTime > 0)
         {
             activeTime -= refreshRate;
-           
-                GameObject gObj = new GameObject();
+
+                GameObject gObj = pooling.GetPoolItem("TrailMat");
                 gObj.transform.SetPositionAndRotation(GameManager.instance.player.transform.position, GameManager.instance.player.transform.rotation);
-                MeshRenderer mr = gObj.AddComponent<MeshRenderer>();
-                MeshFilter mf = gObj.AddComponent<MeshFilter>();
+                MeshRenderer mr = gObj.GetComponent<MeshRenderer>();
+                MeshFilter mf = gObj.GetComponent<MeshFilter>();
 
                 Mesh mesh = new Mesh();
                 skinnedMeshRenderer.BakeMesh(mesh);
                 mf.mesh = mesh;
                 mr.material = mat;
+                gObj.SetActive(true);
 
-                Destroy(gObj, 0.5f);
+                pooling.Destroy(gObj, 0.5f);
 
                 yield return new WaitForSeconds(refreshRate);
             }
