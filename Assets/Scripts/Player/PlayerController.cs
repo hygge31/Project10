@@ -4,17 +4,21 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-
-
 [RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerAnimationController))]
+//[RequireComponent(typeof(PlayerSkills))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    public NavMeshAgent navMeshAgent;
+    [Header("Player State")]
+    public float playerSpeed;
     
+    public Rigidbody _rigidbody;
 
     private void Awake()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        
+        _rigidbody = GetComponent<Rigidbody>();
         
     }
 
