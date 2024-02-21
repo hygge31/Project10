@@ -39,6 +39,12 @@
 <details>
   <summary>코드</summary>
 
+      void NavMeshAgentPath()
+    {
+        paths = navMeshAgent.path.corners;
+        moveReady = true;
+    }
+
      void PlayerMovePath()
     {
         StartCoroutine(PlayerMovePathCo());
