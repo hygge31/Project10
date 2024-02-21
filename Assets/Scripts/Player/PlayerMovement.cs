@@ -188,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
 
         playerAnimationController.animator.SetBool("isWalking", false);
         ClearDrawNavMeshPath();
-        UIManager.Instance.Reset();
+        UIManager.Instance.CloseInteractionUi();
     }
 
    
@@ -235,7 +235,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             transform.position += dir * Time.deltaTime;
-            RotateForward(endPot);
         }
 
     }

@@ -43,7 +43,7 @@ public class PlayerActionUI : MonoBehaviour
     {
         animator.SetTrigger("action_close");
         yield return new WaitForSeconds(0.2f);
-        animator.SetTrigger("open");
+        UIManager.Instance.interactionUI.OpenUi();
     }
 
 }

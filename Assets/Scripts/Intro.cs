@@ -11,12 +11,8 @@ public class Intro : MonoBehaviour
 
     private void Awake()
     {
-        startBtn.onClick.AddListener(() => ActiveStart());
+        startBtn.onClick.AddListener(() => SceneManager.LoadScene("Main"));
     }
 
 
-    void ActiveStart()
-    {
-        SceneManager.LoadScene("Main");
-    }
 }

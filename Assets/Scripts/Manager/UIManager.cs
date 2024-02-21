@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
     public PlayerInteractionUI interactionUI;
     public bool isInteractionUI;
 
+    public GameObject interactionWallObj;
+
+
     [Header("Action UI")]
     public GameObject actionManu;
     private void Awake()
