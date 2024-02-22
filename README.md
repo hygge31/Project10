@@ -22,7 +22,7 @@
 1. UI 를 통해 캐릭터를 제어하고 원하는 액션을 실행시킵니다.
    
   <p>
-  <img src="[https://github.com/hygge31/CodingTest_Csharp/assets/121877159/f2ab462e-cf9b-4e0f-ba5c-8ef23d5ef81f](https://github.com/hygge31/CodingTest_Csharp/assets/121877159/cd4868b1-a19a-4b0a-b83d-9ab2ab10e2d0)" width="350px" />
+  <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/cd4868b1-a19a-4b0a-b83d-9ab2ab10e2d0" width="350px" />
   </p>
   
   Move
@@ -39,10 +39,12 @@
    상호작용
 - 특정 물체와 가까워지면 상호작용 UI 가 나오며 클릭을 누르면 특정 이벤트가 일어납니다.
   (사진)
+  횃불의 경우 애니메이션 커브를 사용해 빛이 일렁이는 효과를 주었습니다.
   <p>
       <h3>횃불 상호작용</h3>
   <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/f2ab462e-cf9b-4e0f-ba5c-8ef23d5ef81f" width="350px" />
   </p>
+  숨겨진 문과 캐릭터가 가까워지면 상호작용 키가 등장하고 클릭하면 벽이 사라지고 새로운 맵이 등장합니다.
    <p>
       <h3>숨겨진 문 상호작용</h3>
   <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/b9d5d8d4-b51c-4e40-998f-be6dcc6a0fe8" width="350px" />
