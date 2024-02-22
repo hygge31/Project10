@@ -12,9 +12,6 @@
   <p>
   <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/cd4868b1-a19a-4b0a-b83d-9ab2ab10e2d0" width="350px" alt="이미지 로딩 중" />
   </p>
-
-  ![이미지 로딩 중입니다...](https://github.com/hygge31/CodingTest_Csharp/assets/121877159/cd4868b1-a19a-4b0a-b83d-9ab2ab10e2d0)
-
   
   Move
 - 마우스를 클릭했을때 바로 움직이는게 아니라 이동 위치를 찍고, 시각화 한 다음, 모든 행동을 끝냈을때 캐릭터가 움직입니다.
@@ -33,12 +30,12 @@
   횃불의 경우 애니메이션 커브를 사용해 빛이 일렁이는 효과를 주었습니다.
   <p>
       <h3>횃불 상호작용</h3>
-  <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/f2ab462e-cf9b-4e0f-ba5c-8ef23d5ef81f" width="350px" />
+  <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/f2ab462e-cf9b-4e0f-ba5c-8ef23d5ef81f" width="350px" alt="이미지 로딩 중" />
   </p>
   숨겨진 문과 캐릭터가 가까워지면 상호작용 키가 등장하고 클릭하면 벽이 사라지고 새로운 맵이 등장합니다.
    <p>
       <h3>숨겨진 문 상호작용</h3>
-  <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/b9d5d8d4-b51c-4e40-998f-be6dcc6a0fe8" width="350px" />
+  <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/b9d5d8d4-b51c-4e40-998f-be6dcc6a0fe8" width="350px" alt="이미지 로딩 중" />
   </p>
  
 
