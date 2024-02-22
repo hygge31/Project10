@@ -25,6 +25,18 @@
   <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/cd4868b1-a19a-4b0a-b83d-9ab2ab10e2d0" width="350px" />
   </p>
 
+<div class="loading-text">
+    이미지를 불러오는 중입니다...
+  </div>
+  
+  <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/cd4868b1-a19a-4b0a-b83d-9ab2ab10e2d0" width="350px" onload="showImage()" />
+  
+  <script>
+    function showImage() {
+      // 이미지 로딩이 완료되면 실행되는 함수
+      document.querySelector('.loading-text').style.display = 'none'; // 로딩 텍스트 숨기기
+    }
+  </script>
 
   
   Move
