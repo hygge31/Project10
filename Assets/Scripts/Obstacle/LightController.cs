@@ -24,9 +24,9 @@ public class LightController : MonoBehaviour
         {
             percent += Time.deltaTime;
             percent %= 1;
-            float interporation = (-Mathf.Pow(percent, 2) + percent) * 4;
-            _light.color = gradient.Evaluate(percent);
-            _light.intensity = animationCurve.Evaluate(percent);
+            float Interpolation = (-Mathf.Pow(percent, 2) + percent) * 4;
+            _light.color = gradient.Evaluate(Interpolation);
+            _light.intensity = animationCurve.Evaluate(Interpolation);
 
             yield return null;
         }
