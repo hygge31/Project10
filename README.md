@@ -36,6 +36,10 @@
    상호작용
 - 특정 물체와 가까워지면 상호작용 UI 가 나오며 클릭을 누르면 특정 이벤트가 일어납니다.
   (사진)
+  <p>
+      <h3>횃불 상호작용</h3>
+  <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/f2ab462e-cf9b-4e0f-ba5c-8ef23d5ef81f" width="350px" />
+  </p>
  
 
 2. 
