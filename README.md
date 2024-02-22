@@ -20,7 +20,9 @@
 <h3>자유 게임 만들기</h3>
 
 1. UI 를 통해 캐릭터를 제어하고 원하는 액션을 실행시킵니다.
-
+  <p>
+  <img src="[https://github.com/hygge31/CodingTest_Csharp/assets/121877159/f2ab462e-cf9b-4e0f-ba5c-8ef23d5ef81f](https://github.com/hygge31/CodingTest_Csharp/assets/121877159/cd4868b1-a19a-4b0a-b83d-9ab2ab10e2d0)" width="350px" />
+  </p>
 
     Move
 - 마우스를 클릭했을때 바로 움직이는게 아니라 이동 위치를 찍고, 시각화 한 다음, 모든 행동을 끝냈을때 캐릭터가 움직입니다.
