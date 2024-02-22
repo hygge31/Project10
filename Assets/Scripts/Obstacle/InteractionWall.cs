@@ -4,46 +4,14 @@ using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InteractionWall : MonoBehaviour
+public class InteractionWall : InteractionBase
 {
-    public GameObject interactionUI;
-    public Button btn;
 
-    Animator animator;
-    Transform playerTransform;
-    bool onInteraction;
-    bool find;
-
-
-    public float distance;
-
-
-    private void Awake()
+    protected override void Start()
     {
-        animator = GetComponent<Animator>();
-    }
-    private void Start()
-    {
-        playerTransform = GameManager.instance.player.transform;
+        base.Start();
         btn.onClick.AddListener(OnClick);
     }
-
-
-    private void Update()
-    {
-        distance = Vector3.Distance(transform.position, playerTransform.position);
-        if (distance < 2f && !onInteraction && !find)
-        {
-            find = true;
-            interactionUI.SetActive(true);
-        }
-        if (distance > 2f&& find)
-        {
-            find = false;
-            interactionUI.SetActive(false);
-        }
-    }
-
 
 
     void OnClick()
