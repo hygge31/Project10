@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6005399e3aa4750bab87d2293b19b0, type: 3}
   m_Name: Cooltime Data
   m_EditorClassIdentifier: 
-  searchBuffCooltime: 0
-  movementBuffCooltime: 0
-  attackBuffCooltime: 0
+  searchBuffCooltime: 60
+  movementBuffCooltime: 120
+  attackBuffCooltime: 120
