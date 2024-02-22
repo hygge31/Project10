@@ -28,7 +28,7 @@ public class InteractionBase : MonoBehaviour
     }
 
 
-    protected void Update()
+    private void Update()
     {
         distance = Vector3.Distance(transform.position, playerTransform.position);
         if (distance < 2f && !onInteraction && !find)

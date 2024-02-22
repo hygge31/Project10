@@ -23,6 +23,7 @@ public class PlayerInteractionUI : MonoBehaviour
         cencelBtn.onClick.AddListener(CancelBtn);
         moveBtn.onClick.AddListener(MoveBtn);
         actionBtn.onClick.AddListener(ActionUiOpen);
+        attackBtn.onClick.AddListener(AttackBtn);
     }
 
 
@@ -49,7 +50,6 @@ public class PlayerInteractionUI : MonoBehaviour
     }
 
 
-
     void MoveBtn()
     {
         CloseUi();
@@ -70,5 +70,11 @@ public class PlayerInteractionUI : MonoBehaviour
     {
         animator.SetTrigger("action_open");
         CloseUi();
+    }
+
+    void AttackBtn()
+    {
+        CloseUi();
+        GameManager.instance.player.GetComponent<PlayerAttack>().ReadyForAttack();
     }
 }

@@ -40,13 +40,23 @@ public class PlayerAnimationController : MonoBehaviour
         if(distance < 0.1f)
         {
             animator.SetBool("isWalking", false);
+            animator.SetBool("isRunning", false);
+
         }
-        else
+        else if(distance > 0.1f)
         {
-            animator.SetBool("isWalking", true);
+            if (GameManager.instance.player.GetComponent<PlayerMovement>().isRuning)
+            {
+                animator.SetBool("isRunning", true);
+            }
+            else
+            {
+                animator.SetBool("isWalking", true);
+            }
         }
-        
     }
+
+
 
 
     void SetAnimationSpeed(float speed)

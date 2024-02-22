@@ -15,9 +15,9 @@ public class PlayerMovement : MonoBehaviour
     Vector3 arrivalPoint;
 
     public bool isMoveing;
-    public float orgPlayerSpeed;
+    //public float orgPlayerSpeed;
     public float runSpeed;
-    bool isRuning;
+    public bool isRuning;
     public float rollingCooltime;
     public float curRollingCooltime;
     bool isRolling;
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         playerAnimationController = GetComponent<PlayerAnimationController>();
 
-        orgPlayerSpeed = playerController.playerSpeed;
+        //orgPlayerSpeed = playerController.playerSpeed;
         arrivalPoint = transform.position;
 
         pooling.CreatePoolItem(GameManager.instance.poolingBox);
@@ -188,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
 
         playerAnimationController.animator.SetBool("isWalking", false);
         ClearDrawNavMeshPath();
+        UIManager.Instance.infoText.text = "I : 캐릭터 행동 메뉴";
         UIManager.Instance.interactionUI.possibleOpenUI = true;
     }
 
@@ -214,6 +215,7 @@ public class PlayerMovement : MonoBehaviour
     void UpdateLineRenderer(Vector3[] paths)
     {
         lineRenderer.enabled = true;
+        Debug.Log(paths.Length);
         lineRenderer.positionCount = paths.Length;
         for (int i = 0; i < paths.Length; i++)
         {
@@ -234,7 +236,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            transform.position += dir * Time.deltaTime;
+            transform.position += dir * runSpeed * Time.deltaTime;
         }
 
     }
@@ -328,6 +330,7 @@ public class PlayerMovement : MonoBehaviour
         playerAnimationController.animator.SetBool("isRunning", true);
         playerAnimationController.isRunning = true;
     }
+
     public void RunOff()
     {
         navMeshAgent.speed = 1.5f; ;

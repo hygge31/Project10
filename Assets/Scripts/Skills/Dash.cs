@@ -20,7 +20,7 @@ public class Dash : MonoBehaviour
     public bool onDash;
 
     float initSpeed = 3f;
-    float maxSpeed =4f;
+    float maxSpeed = 4f;
 
     public float accelerationTime = 2f; // 가속 시간
     public float decelerationTime = 2f; // 감속 시간
@@ -28,23 +28,13 @@ public class Dash : MonoBehaviour
     public float currentAccelerationTime; // 현재 가속 시간
     public float currentDecelerationTime; // 현재 감속 시간
 
-    [Header("Trail Mesh")]
-    float refreshRate = 0.05f;
-    bool isTrailActive;
-    public SkinnedMeshRenderer skinnedMeshRenderer;
+    
 
-    public Material mat;
 
-    Pooling pooling;
-    Transform poolingBox;
-
- 
 
     private void Start()
     {
-        pooling = GetComponent<Pooling>();
-        poolingBox = GameManager.instance.poolingBox;
-        pooling.CreatePoolItem(poolingBox);
+        
 
         playerController = GameManager.instance.player.GetComponent<PlayerController>();
         playerAnimationController = GameManager.instance.player.GetComponent<PlayerAnimationController>();
@@ -54,62 +44,62 @@ public class Dash : MonoBehaviour
 
     public void ActiveDash()
     {
-        if(!onDash && curCooltime <= 0)
-        {
-            StartCoroutine(ActiveDashCo());
-        }
-        
+        //if (!onDash && curCooltime <= 0)
+        //{
+        //    StartCoroutine(ActiveDashCo());
+        //}
+
     }
 
-    IEnumerator ActiveDashCo()
-    {
-        onDash = true;
-        curCooltime = cooltime;
+    //IEnumerator ActiveDashCo()
+    //{
+    //    onDash = true;
+    //    curCooltime = cooltime;
 
-        float initspeed = 1;
-        float maxspeed = 2;
+    //    float initspeed = 1;
+    //    float maxspeed = 2;
 
-        StartCoroutine(DashCooltimeCo());
-        StartCoroutine(ActiveTrailCo(3.5f));
-        playerAnimationController.animator.SetBool("isRunning", true);
-        playerAnimationController.isRunning = true;
+    //    StartCoroutine(DashCooltimeCo());
+    //    StartCoroutine(ActiveTrailCo(3.5f));
+    //    playerAnimationController.animator.SetBool("isRunning", true);
+    //    playerAnimationController.isRunning = true;
 
-        while (currentAccelerationTime < accelerationTime) //1
-        {
-            currentAccelerationTime += Time.deltaTime;
-            playerMovement.navMeshAgent.speed = Mathf.Lerp(initSpeed, maxSpeed, currentAccelerationTime / accelerationTime);
-
-
-            float curSpeed = Mathf.Lerp(initspeed, maxspeed, currentAccelerationTime / accelerationTime);
-            playerAnimationController.animator.SetFloat("addSpeed",curSpeed );
-
-            yield return null;
-        }
-
-        while (currentDecelerationTime < decelerationTime) //1
-        {
-            currentDecelerationTime += Time.deltaTime;
-            playerMovement.navMeshAgent.speed = Mathf.Lerp(maxSpeed, initSpeed, currentDecelerationTime / decelerationTime);
-
-            float curSpeed = Mathf.Lerp(maxspeed, initspeed, currentDecelerationTime / decelerationTime);
-            playerAnimationController.animator.SetFloat("addSpeed", curSpeed);
+    //    while (currentAccelerationTime < accelerationTime) //1
+    //    {
+    //        currentAccelerationTime += Time.deltaTime;
+    //        playerMovement.navMeshAgent.speed = Mathf.Lerp(initSpeed, maxSpeed, currentAccelerationTime / accelerationTime);
 
 
-            yield return null;
-        }
-        playerAnimationController.animator.SetBool("isRunning", false);
-        playerAnimationController.isRunning = false;
+    //        float curSpeed = Mathf.Lerp(initspeed, maxspeed, currentAccelerationTime / accelerationTime);
+    //        playerAnimationController.animator.SetFloat("addSpeed", curSpeed);
 
-        currentAccelerationTime = 0;
-        currentDecelerationTime = 0;
+    //        yield return null;
+    //    }
 
-        onDash = false;
-    }
+    //    while (currentDecelerationTime < decelerationTime) //1
+    //    {
+    //        currentDecelerationTime += Time.deltaTime;
+    //        playerMovement.navMeshAgent.speed = Mathf.Lerp(maxSpeed, initSpeed, currentDecelerationTime / decelerationTime);
+
+    //        float curSpeed = Mathf.Lerp(maxspeed, initspeed, currentDecelerationTime / decelerationTime);
+    //        playerAnimationController.animator.SetFloat("addSpeed", curSpeed);
+
+
+    //        yield return null;
+    //    }
+    //    playerAnimationController.animator.SetBool("isRunning", false);
+    //    playerAnimationController.isRunning = false;
+
+    //    currentAccelerationTime = 0;
+    //    currentDecelerationTime = 0;
+
+    //    onDash = false;
+    //}
 
 
     IEnumerator DashCooltimeCo()
     {
-        while(curCooltime > 0)
+        while (curCooltime > 0)
         {
             curCooltime -= Time.deltaTime;
             yield return null;
@@ -117,31 +107,9 @@ public class Dash : MonoBehaviour
 
         curCooltime = 0;
     }
+}
 
 
 
-
-    IEnumerator ActiveTrailCo(float activeTime)
-    {
-        while(activeTime > 0)
-        {
-            activeTime -= refreshRate;
-
-                GameObject gObj = pooling.GetPoolItem("TrailMat");
-                gObj.transform.SetPositionAndRotation(GameManager.instance.player.transform.position, GameManager.instance.player.transform.rotation);
-                MeshRenderer mr = gObj.GetComponent<MeshRenderer>();
-                MeshFilter mf = gObj.GetComponent<MeshFilter>();
-
-                Mesh mesh = new Mesh();
-                skinnedMeshRenderer.BakeMesh(mesh);
-                mf.mesh = mesh;
-                mr.material = mat;
-                gObj.SetActive(true);
-
-                pooling.Destroy(gObj, 0.5f);
-
-                yield return new WaitForSeconds(refreshRate);
-            }
-        }
-    }
+    
 

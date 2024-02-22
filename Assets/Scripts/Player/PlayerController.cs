@@ -11,13 +11,11 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player State")]
-    public float playerSpeed;
     public Transform interactionUITransform;
     public Rigidbody _rigidbody;
 
     private void Awake()
-    {
-        
+    {        
         _rigidbody = GetComponent<Rigidbody>();
         
     }

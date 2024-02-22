@@ -11,21 +11,23 @@ public class UIManager : MonoBehaviour
     public event Action OnCloseUi;
 
     public TextMeshProUGUI infoText;
-    public Transform playerInteractionUiTransform;
     
+
 
     [Header("Components")]
     PlayerMovement playerMovement;
 
     [Header("Interaction UI")]
+    public Transform playerInteractionUiTransform;
     public PlayerInteractionUI interactionUI;
     public bool isInteractionUI;
 
-    public GameObject interactionWallObj;
+    //public GameObject interactionWallObj;
 
 
     [Header("Action UI")]
     public GameObject actionManu;
+
     private void Awake()
     {
         if(instance != null && instance != this)
