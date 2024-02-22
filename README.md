@@ -51,7 +51,7 @@ Navigation 에 목표위치를 정해주고, Navigation 이 목표위치까지 �
 
 순서
 
-상호작용 UI 에서 Move 선택 -> StartDrawNavMeshAgentPath() :이동경로 그려주기 -> 마우스 오른쪽 클릭(왼쪽은 취소) 
+상호작용 UI 에서 Move 선택 -> StartDrawNavMeshAgentPath() :이동경로 그려주기 -> 마우스 오른쪽 클릭(왼쪽은 취소)</br>
 -> SetNavMeshAgentPath(): 이동경로 확정 -> 엔터키 입력 -> PlayerMovePath() : 플레이어 이동</br>
 
 실질적으로 PlayerMovePath() 는 캐릭터가 이동할 위치만 업데이트 해주고, FixedUpdate 에서 위치가 업데이트 되면 해당위치로 캐릭터가 이동합니다.</br>
