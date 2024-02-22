@@ -41,7 +41,7 @@
   <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/f2ab462e-cf9b-4e0f-ba5c-8ef23d5ef81f" width="350px" />
   </p>
    <p>
-      <h3>숨겨진 문 상호작용</h3>
+      <h3>숨겨진 문 상호작용</h3>
   <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/b9d5d8d4-b51c-4e40-998f-be6dcc6a0fe8" width="350px" />
   </p>
  
