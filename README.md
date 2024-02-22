@@ -24,6 +24,8 @@
   <p>
   <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/cd4868b1-a19a-4b0a-b83d-9ab2ab10e2d0" width="350px" />
   </p>
+
+
   
   Move
 - 마우스를 클릭했을때 바로 움직이는게 아니라 이동 위치를 찍고, 시각화 한 다음, 모든 행동을 끝냈을때 캐릭터가 움직입니다.
@@ -55,9 +57,16 @@
 
 트러블 슈팅
  
-처음에는 LineRenderer 로 이동경로만 그려주기 위해 NavMeshAgent에서 이동경로만 받아와 이동경로 수만큼 라인을 그려줬는데,</br>
-플레이어가 이동할때 이동경로 또한 도착지점까지 점점 줄어들어야 하는데 줄어들지 않는 문제와 이동할때 출발할때부터 도착위치를 바라보며 이동하는 문제가 있었습니다.
-그래서 NavMeshAgent에 목표 위치를 지정해서 자동으로 움직이는게 아니라, 목표위치를 설정해놓고 이동경로만 배열로 가져와 이를 이용해 두가지 문제를 해결했습니다.
+캐릭터가 목표 지점으로 이동할때,  이동하는 방향이 아닌 도착지점을 바라보고 이동하는 문제점과 캐릭터가 움직여도 이동경로가 처음 출발위치부터 도착위치까지 계속 표시되는 문제가 있었습니다.
+Navigation 으로 목표위치를 지정 해주고, 캐릭터의 방향을 단순히 목표위치에서 현재위치를 뺀 값을 노멀라이즈 해준 것으로 캐릭터의 방향을 결정한 것과,
+Navigation의 목표를 지정해줄때 LineRenderer의 이동경로를 딱 한번만 그려주고 있었기 떄문이었습니다.
+또한 캐릭터의 행동을 UI를 통해 통제 할 것이기 때문에 마우스 클릭으로 목표위치를 정한뒤 바로 움직이는게 아닌 모든 행동이 끝났을때 사용자가 엔터키를 누르면 움직여야 했기 떄문에
+Navigation 에 목표위치를 정해주고, Navigation 이 목표위치까지 이동경로를 계산해주면, 이동경로만 배열로 받아와 사용하는 것으로 로직을 수정했습니다.
+
+순서
+
+상호작용 UI 에서 Move 선택 -> StartDrawNavMeshAgentPath() :이동경로 그려주기 -> 마우스 오른쪽 클릭(왼쪽은 취소) -> SetNavMeshAgentPath(): 이동경로 확정 -> 엔터키 입력 -> PlayerMovePath() : 플레이어 이동
+실질적으로 PlayerMovePath() 는 캐릭터가 이동할 위치만 업데이트 해주고, FixedUpdate 에서 위치가 업데이트 되면 해당위치로 캐릭터가 이동합니다.
 
 <details>
   <summary>코드</summary>
@@ -104,6 +113,18 @@
         playerAnimationController.animator.SetBool("isWalking", false);
         ClearDrawNavMeshPath();
         UIManager.Instance.Reset();
+    }
+
+     void UpdateLineRenderer(Vector3[] paths) //경로 그려주기
+    {
+        lineRenderer.enabled = true;
+        Debug.Log(paths.Length);
+        lineRenderer.positionCount = paths.Length;
+        for (int i = 0; i < paths.Length; i++)
+        {
+            lineRenderer.SetPosition(i, paths[i]);
+        }
+
     }
 
 </details>
