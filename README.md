@@ -5,24 +5,12 @@
     2. 자유 게임 만들기
      
 
-<h3>인트로 씬 구성</h3>
-간단하게 AddListener을 사용해 시작버튼을 눌러 다음 씬으로 이동하게 만들었습니다.
-<details>
-  <summary>코드</summary>
-  <pre>
-    <code>
-      startBtn.onClick.AddListener(() => SceneManager.LoadScene("Main"));
-    </code>
-  </pre>
-</details>
-
-
 <h3>자유 게임 만들기</h3>
 
 1. UI 를 통해 캐릭터를 제어하고 원하는 액션을 실행시킵니다.
    
   <p>
-  <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/cd4868b1-a19a-4b0a-b83d-9ab2ab10e2d0" width="350px" />
+  <img src="https://github.com/hygge31/CodingTest_Csharp/assets/121877159/cd4868b1-a19a-4b0a-b83d-9ab2ab10e2d0" width="350px" alt="이미지 로딩 중" />
   </p>
 
 <div class="loading-text">
