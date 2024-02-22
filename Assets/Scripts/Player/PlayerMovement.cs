@@ -163,7 +163,6 @@ public class PlayerMovement : MonoBehaviour
         UIManager.Instance.infoText.text = "이동중";
         isMoveing = true;
         moveReady = false;
-        playerAnimationController.animator.SetBool("isWalking", true);
         for (int i = 1; i < paths.Length; i++)
         {
             Vector3 dir = (paths[i] - transform.position).normalized;
@@ -185,8 +184,6 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-
-        playerAnimationController.animator.SetBool("isWalking", false);
         ClearDrawNavMeshPath();
         UIManager.Instance.infoText.text = "I : 캐릭터 행동 메뉴";
         UIManager.Instance.interactionUI.possibleOpenUI = true;
@@ -215,7 +212,6 @@ public class PlayerMovement : MonoBehaviour
     void UpdateLineRenderer(Vector3[] paths)
     {
         lineRenderer.enabled = true;
-        Debug.Log(paths.Length);
         lineRenderer.positionCount = paths.Length;
         for (int i = 0; i < paths.Length; i++)
         {
