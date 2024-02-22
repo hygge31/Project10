@@ -188,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
 
         playerAnimationController.animator.SetBool("isWalking", false);
         ClearDrawNavMeshPath();
-        UIManager.Instance.CloseInteractionUi();
+        UIManager.Instance.interactionUI.possibleOpenUI = true;
     }
 
    
